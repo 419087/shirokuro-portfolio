@@ -1,11 +1,55 @@
 ---
-import Welcome from '../components/Welcome.astro';
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// 1. "works" コレクションから全ての記事を取得する
+const allWorks = await getCollection('works');
+
+// 必要に応じて日付順にソートする（新しい順）
+const sortedWorks = allWorks.sort((a, b) => 
+  b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
 ---
 
 <Layout>
-	<Welcome />
+  <main>
+    <h1>Kazuki's Portfolio</h1>
+    <p>仙台の大学でVRやネットワーク遅延の研究をしています。</p>
+
+    <section>
+      <h2>制作実績・研究</h2>
+      <ul class="work-list">
+        {sortedWorks.map(work => (
+          <li>
+            <a href={`${import.meta.env.BASE_URL}/works/${work.slug}`}>
+              <h3>{work.data.title}</h3>
+              <p>{work.data.description}</p>
+              <time>{work.data.publishDate.toLocaleDateString('ja-JP')}</time>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  </main>
 </Layout>
+
+<style>
+  .work-list {
+    list-style: none;
+    padding: 0;
+  }
+  .work-list li {
+    margin-bottom: 1.5rem;
+    border: 1px solid #ccc;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background 0.2s;
+  }
+  .work-list li:hover {
+    background: #f9f9f9;
+  }
+  .work-list a {
+    text-decoration: none;
+    color: inherit;
+  }
+</style>
