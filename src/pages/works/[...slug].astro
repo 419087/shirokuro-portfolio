@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+
+export async function getStaticPaths() {
+  const workEntries = await getCollection('works');
+  return workEntries.map(entry => ({
+    params: { slug: entry.slug }, props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout>
+  <article>
+    <h1>{entry.data.title}</h1>
+    <p>公開日: {entry.data.publishDate.toLocaleDateString('ja-JP')}</p>
+    
+    <div class="prose">
+      <Content />
+    </div>
+  </article>
+</Layout>
