@@ -2,14 +2,15 @@
 // src/pages/index.astro
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 
 const allWorks = await getCollection('works');
 ---
 
 <Layout>
   <header class="py-12">
-    <h1 class="text-4xl font-extrabold mb-4">Game Engineer Portfolio</h1>
-    <p class="text-slate-400 text-lg max-w-2xl">
+    <h1 class="text-4xl font-extrabold mb-4">shirokuro Portfolio</h1>
+    <p class="text-slate-400 text-lg max-w-3xl">
       VRコンテンツ開発とネットワーク遅延の研究に取り組んでいます。
       主にUnity / C#を用いたインタラクティブな体験の構築が得意です。
     </p>
@@ -25,17 +26,24 @@ const allWorks = await getCollection('works');
       {allWorks.map(work => (
         <a href={`${import.meta.env.BASE_URL}works/${work.id}`} class="group">
           <div class="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden hover:border-blue-500 transition-all hover:-translate-y-1 shadow-lg">
-            {/* 画像があれば表示、なければプレースホルダー */}
             <div class="aspect-video bg-slate-700 relative overflow-hidden">
-              <div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">
-                {work.data.title}
-              </div>
+              {work.data.image ? (
+                <Image
+                  src={work.data.image}
+                  alt={work.data.title}
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">
+                  {work.data.title}
+                </div>
+              )}
             </div>
             
             <div class="p-5">
               <div class="flex gap-2 mb-3">
                 {work.data.tags.map(tag => (
-                  <span class="text-[10px] uppercase tracking-wider bg-slate-900 text-blue-400 px-2 py-0.5 rounded border border-blue-900/50">
+                  <span class="inline-flex items-center rounded-md border border-blue-900/50 bg-slate-900/90 px-2 py-0.5 text-[12px] tracking-[0.06em] text-blue-400">
                     {tag}
                   </span>
                 ))}
