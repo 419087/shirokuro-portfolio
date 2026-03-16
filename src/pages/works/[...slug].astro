@@ -38,9 +38,7 @@ const { Content } = await render(entry);
           {entry.data.title}
         </h1>
         <p class="mt-4 text-sm text-slate-400">
-          公開日: <time datetime={entry.data.publishDate.toISOString()}
-            >{entry.data.publishDate.toLocaleDateString("ja-JP")}</time
-          >
+          公開日: <time datetime={entry.data.publishDate.toISOString()}>{entry.data.publishDate.toLocaleDateString("ja-JP")}</time>
         </p>
 
         {
