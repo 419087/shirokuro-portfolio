@@ -47,9 +47,9 @@ const { Content } = await render(entry);
           entry.data.tags.length > 0 && (
             <ul class="mt-4 flex flex-wrap items-center gap-2">
               {entry.data.tags.map((tag) => (
-                <span class="inline-flex items-center rounded-md border border-blue-900/50 bg-slate-900/90 px-2 py-0.5 text-[12px] tracking-[0.06em] text-blue-400">
+                <li class="inline-flex items-center rounded-md border border-blue-900/50 bg-slate-900/90 px-2 py-0.5 text-[12px] tracking-[0.06em] text-blue-400">
                   {tag}
-                </span>
+                </li>
               ))}
             </ul>
           )
