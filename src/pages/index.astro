@@ -4,7 +4,10 @@ import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 
-const allWorks = await getCollection('works');
+// 作品を公開日順に取得
+const allWorks = (await getCollection('works')).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
 ---
 
 <Layout>
