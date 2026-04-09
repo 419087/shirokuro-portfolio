@@ -24,7 +24,7 @@ const allWorks = await getCollection('works');
     
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
       {allWorks.map(work => (
-        <a href={`${import.meta.env.BASE_URL}works/${work.id}`} class="group">
+        <a href={`${import.meta.env.BASE_URL}/works/${work.id}`} class="group">
           <div class="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden hover:border-blue-500 transition-all hover:-translate-y-1 shadow-lg">
             <div class="aspect-video bg-slate-700 relative overflow-hidden">
               {work.data.image ? (
