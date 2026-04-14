@@ -2,6 +2,8 @@
 import { getCollection, render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { Image } from "astro:assets";
+import TagFilterButton from "../../components/TagFilterButton.astro";
+import TagWorksPopup from "../../components/TagWorksPopup.astro";
 
 export async function getStaticPaths() {
   const workEntries = await getCollection("works");
@@ -45,8 +47,8 @@ const { Content } = await render(entry);
           entry.data.tags.length > 0 && (
             <ul class="mt-4 flex flex-wrap items-center gap-2">
               {entry.data.tags.map((tag) => (
-                <li class="inline-flex items-center rounded-md border border-blue-900/50 bg-slate-900/90 px-2 py-0.5 text-[12px] tracking-[0.06em] text-blue-400">
-                  {tag}
+                <li>
+                  <TagFilterButton tag={tag} />
                 </li>
               ))}
             </ul>
@@ -73,6 +75,8 @@ const { Content } = await render(entry);
       >
         <Content />
       </div>
+
+      <TagWorksPopup />
     </section>
   </article>
 </Layout>
