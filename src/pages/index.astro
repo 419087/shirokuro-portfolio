@@ -3,6 +3,8 @@
 import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import TagFilterButton from '../components/TagFilterButton.astro';
+import TagWorksPopup from '../components/TagWorksPopup.astro';
 
 // 作品を公開日順に取得
 const allWorks = (await getCollection('works')).sort(
@@ -46,9 +48,7 @@ const allWorks = (await getCollection('works')).sort(
             <div class="p-5">
               <div class="flex gap-2 mb-3">
                 {work.data.tags.map(tag => (
-                  <span class="inline-flex items-center rounded-md border border-blue-900/50 bg-slate-900/90 px-2 py-0.5 text-[12px] tracking-[0.06em] text-blue-400">
-                    {tag}
-                  </span>
+                  <TagFilterButton tag={tag} />
                 ))}
               </div>
               <h3 class="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
@@ -63,4 +63,6 @@ const allWorks = (await getCollection('works')).sort(
       ))}
     </div>
   </section>
+
+  <TagWorksPopup />
 </Layout>

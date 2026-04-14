@@ -1,0 +1,16 @@
+---
+interface Props {
+  tag: string;
+}
+
+const { tag } = Astro.props;
+---
+
+<button
+  type="button"
+  data-tag-button
+  data-tag={tag}
+  class="inline-flex items-center rounded-md border border-blue-900/50 bg-slate-900/90 px-2 py-0.5 text-[12px] tracking-[0.06em] text-blue-400 transition-colors hover:border-blue-500 hover:text-blue-300"
+>
+  {tag}
+</button>
