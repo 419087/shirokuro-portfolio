@@ -17,7 +17,7 @@ image: ./jjj/jjj.png
 ## 制作体制
 4人のチーム（うちプログラマー3人）
 
-私は主にアニメーション関連の実装を担当しました。
+私はプログラマーと3Dグラフィッカーとして、主にアニメーション関連の実装を担当しました。
 
 ## 技術スタック
 - Unity
@@ -29,3 +29,7 @@ image: ./jjj/jjj.png
 
 ## 制作期間
 約半年（2025年5月～10月）
+
+## Links
+* [サークルHP(Windows/Mac向けビルドを配布しています)](https://micomprocedure.com/works/251)
+* [GitHubリポジトリ](https://github.com/MicomProcedure/JJJ)
