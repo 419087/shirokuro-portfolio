@@ -33,5 +33,5 @@ image: ./jjj/jjj.png
 それ以降も細かいアップデートを継続中です。
 
 ## リンク
-* [サークルHP(Windows/Mac向けビルドを配布しています)](https://micomprocedure.com/works/251)
-* [GitHubリポジトリ](https://github.com/MicomProcedure/JJJ)
+- [サークルHP(Windows/Mac向けビルドを配布しています)](https://micomprocedure.com/works/251)
+- [GitHubリポジトリ](https://github.com/MicomProcedure/JJJ)

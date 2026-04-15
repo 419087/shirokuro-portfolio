@@ -13,12 +13,12 @@ image: ./vr-research/test.png
 2台のクライアントと1台のサーバーで通信を行い、2人のユーザーがVR空間でハイタッチを行うことができるようになっています。
 
 ## 技術スタック
-* Unity 6000.2.6f2
-    * UniTask
-    * VContainer
-    * OpenXR
-    * Netcode for GameObjects
-* C#
+- Unity 6000.2.6f2
+    - UniTask
+    - VContainer
+    - OpenXR
+    - Netcode for GameObjects
+- C#
 
 ## Links
-* [GitHubリポジトリ](https://github.com/419087/latency-vr-interaction-experiment)
+- [GitHubリポジトリ](https://github.com/419087/latency-vr-interaction-experiment)

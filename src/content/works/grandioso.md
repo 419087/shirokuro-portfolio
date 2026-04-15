@@ -28,5 +28,5 @@ image: ./jjj/jjj.png
 それ以降も楽曲追加やバグ修正などのアップデートを継続中
 
 ## リンク
-* [サークルHP(Windows/Mac向けビルドを配布しています)](https://micomprocedure.com/works/242)
-* [GitHubリポジトリ](https://github.com/GOK-Proc/GOK-Proc-dev)
+- [サークルHP(Windows/Mac向けビルドを配布しています)](https://micomprocedure.com/works/242)
+- [GitHubリポジトリ](https://github.com/GOK-Proc/GOK-Proc-dev)
