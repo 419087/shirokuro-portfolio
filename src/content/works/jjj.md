@@ -17,7 +17,7 @@ image: ./jjj/jjj.png
 ## 制作体制
 4人のチーム（うちプログラマー3人）
 
-私はプログラマーと3Dグラフィッカーとして、主にアニメーション関連の実装を担当しました。
+私はプログラマー兼3Dグラフィッカーとして、主にアニメーション関連の実装を担当しました。
 
 ## 技術スタック
 - Unity
@@ -34,4 +34,5 @@ image: ./jjj/jjj.png
 
 ## リンク
 - [サークルHP(Windows/Mac向けビルドを配布しています)](https://micomprocedure.com/works/251)
+- [ゲームクリエイター甲子園 ゲーム紹介ページ](https://gameparade.creators-guild.com/works/3321)
 - [GitHubリポジトリ](https://github.com/MicomProcedure/JJJ)
