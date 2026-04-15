@@ -2,7 +2,7 @@
 title: "ジャジャンジャッジ"
 publishDate: 2026-03-16
 description: "邪道なじゃんけんの勝敗をジャッジするゲーム"
-tags: ["Game"]
+tags: ["Game", "Unity"]
 image: ./jjj/jjj.png
 ---
 
@@ -29,6 +29,8 @@ image: ./jjj/jjj.png
 
 ## 制作期間
 約半年（2025年5月～10月）
+
+それ以降も細かいアップデートを継続中です。
 
 ## Links
 * [サークルHP(Windows/Mac向けビルドを配布しています)](https://micomprocedure.com/works/251)
