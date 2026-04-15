@@ -3,7 +3,7 @@ title: "Ball Drop Game 3D"
 publishDate: 2026-04-15
 description: "3D版スイカゲーム"
 tags: ["Game", "Unity"]
-image: ./jjj/jjj.png
+image: ./water-melon-3d/BallDropGame3D.png
 ---
 
 ## 概要

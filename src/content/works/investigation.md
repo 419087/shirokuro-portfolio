@@ -26,6 +26,6 @@ image: ./jjj/jjj.png
 約4か月（2022年4月～2022年10月）
 
 ## リンク
-- [サークルHP(Windows/Mac向けビルドを配布しています)](https://micomprocedure.com/works/22a)
+- [サークルHP(Windows向けビルドを配布しています)](https://micomprocedure.com/works/22a)
 
 ※現在、GitHubリポジトリは非公開にしています。

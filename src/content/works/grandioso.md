@@ -3,7 +3,7 @@ title: "Grandioso"
 publishDate: 2026-04-15
 description: "音大生とのコラボで作ったリズムゲーム"
 tags: ["Game", "Unity"]
-image: ./jjj/jjj.png
+image: ./grandioso/Grandioso.png
 ---
 
 ## 概要
