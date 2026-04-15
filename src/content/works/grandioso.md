@@ -1,6 +1,6 @@
 ---
 title: "Grandioso"
-publishDate: 2026-03-16
+publishDate: 2026-04-15
 description: "音大生とのコラボで作ったリズムゲーム"
 tags: ["Game", "Unity"]
 image: ./jjj/jjj.png
@@ -15,7 +15,7 @@ image: ./jjj/jjj.png
 ## 制作体制
 27人のチーム（うちプログラマー5人）
 
-私はプロトタイプの制作と、ストーリーパートの実装を担当しました。
+私はプログラマーとして、プロトタイプの制作と、ストーリーパートの実装を担当しました。
 
 ## 技術スタック
 - Unity 2022.3.62f2
@@ -27,6 +27,6 @@ image: ./jjj/jjj.png
 
 それ以降も楽曲追加やバグ修正などのアップデートを継続中
 
-## Links
+## リンク
 * [サークルHP(Windows/Mac向けビルドを配布しています)](https://micomprocedure.com/works/242)
 * [GitHubリポジトリ](https://github.com/GOK-Proc/GOK-Proc-dev)
