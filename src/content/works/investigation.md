@@ -3,7 +3,7 @@ title: "Investigation"
 publishDate: 2026-04-15
 description: "化け物から逃げながら脱出を目指す3Dホラーゲーム"
 tags: ["Game", "Unity"]
-image: ./jjj/jjj.png
+image: ./investigation/Investigation.png
 ---
 
 ## 概要
