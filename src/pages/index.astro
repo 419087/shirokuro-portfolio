@@ -1,11 +1,76 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// src/pages/index.astro
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import TagFilterButton from '../components/TagFilterButton.astro';
+import TagWorksPopup from '../components/TagWorksPopup.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// 作品を優先順位順に取得
+const allWorks = (await getCollection('works')).sort(
+  (a, b) => a.data.priority.valueOf() - b.data.priority.valueOf()
+);
 ---
 
 <Layout>
-	<Welcome />
+  <header class="py-12">
+    <h1 class="text-4xl font-extrabold mb-4">shirokuro Portfolio</h1>
+    <p class="text-slate-400 text-lg max-w-3xl">
+      大学でゲーム制作サークルに所属し、主にチームで様々なゲーム開発を行っています。<br />
+      研究室では、VR体験とネットワーク遅延の関係について研究しています。
+    </p>
+    <a
+      href="https://github.com/419087"
+      target="_blank"
+      rel="noreferrer"
+      class="mt-5 inline-flex items-center rounded-md border border-blue-300/40 bg-slate-900/80 px-4 py-2 text-sm font-medium text-blue-300 transition-colors hover:border-blue-300 hover:text-blue-200"
+    >
+      GitHubプロフィールページ
+    </a>
+  </header>
+
+  <section>
+    <h2 class="text-2xl font-bold mb-8 flex items-center gap-2">
+      <span class="w-8 h-1 bg-blue-500 rounded-full"></span>
+      Featured Works
+    </h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {allWorks.map(work => (
+        <a href={`${import.meta.env.BASE_URL}works/${work.id}`} class="group">
+          <div class="bg-slate-800 border border-slate-700 rounded-xl overflow-hidden hover:border-blue-500 transition-all hover:-translate-y-1 shadow-lg">
+            <div class="aspect-video bg-slate-700 relative overflow-hidden">
+              {work.data.image ? (
+                <Image
+                  src={work.data.image}
+                  alt={work.data.title}
+                  class="absolute inset-0 w-full h-full object-cover"
+                />
+              ) : (
+                <div class="absolute inset-0 flex items-center justify-center text-slate-500 italic">
+                  {work.data.title}
+                </div>
+              )}
+            </div>
+            
+            <div class="p-5">
+              <div class="flex gap-2 mb-3">
+                {work.data.tags.map(tag => (
+                  <TagFilterButton tag={tag} />
+                ))}
+              </div>
+              <h3 class="text-xl font-bold mb-2 group-hover:text-blue-400 transition-colors">
+                {work.data.title}
+              </h3>
+              <p class="text-slate-400 text-sm line-clamp-2">
+                {work.data.description}
+              </p>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <TagWorksPopup />
 </Layout>

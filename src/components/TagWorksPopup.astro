@@ -1,0 +1,118 @@
+---
+import { getCollection } from "astro:content";
+
+const baseUrl = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const allWorks = (await getCollection("works")).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const worksForPopup = allWorks.map((work) => ({
+  id: work.id,
+  title: work.data.title,
+  description: work.data.description,
+  tags: work.data.tags,
+}));
+---
+
+<dialog id="tag-works-dialog" class="fixed left-1/2 top-1/2 m-0 max-h-[calc(100vh-2rem)] w-[min(760px,calc(100vw-2rem))] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-xl border border-slate-700 bg-slate-900 p-0 text-slate-100 backdrop:bg-slate-950/70">
+  <div class="flex items-center justify-between border-b border-slate-700 p-5">
+    <h3 id="tag-dialog-title" class="text-lg font-bold"></h3>
+    <button type="button" data-close-tag-dialog class="text-sm text-slate-400 transition-colors hover:text-slate-100">閉じる</button>
+  </div>
+  <div id="tag-dialog-list" class="max-h-[65vh] space-y-3 overflow-auto p-5"></div>
+</dialog>
+
+<script id="works-data" type="application/json" set:html={JSON.stringify({ baseUrl, works: worksForPopup })}></script>
+<script>
+  type PopupWork = {
+    id: string;
+    title: string;
+    description: string;
+    tags: string[];
+  };
+
+  const dataEl = document.getElementById("works-data") as HTMLScriptElement | null;
+  const dialog = document.getElementById("tag-works-dialog") as HTMLDialogElement | null;
+  const titleEl = document.getElementById("tag-dialog-title") as HTMLElement | null;
+  const listEl = document.getElementById("tag-dialog-list") as HTMLElement | null;
+
+  if (dataEl && dialog && titleEl && listEl) {
+    const rawJson = dataEl.textContent?.trim() || '{"baseUrl":"/","works":[]}';
+    const parsed = JSON.parse(rawJson) as {
+      baseUrl?: string;
+      works?: PopupWork[];
+    };
+
+    const works: PopupWork[] = Array.isArray(parsed.works) ? parsed.works : [];
+    const popupBaseUrl = parsed.baseUrl || "/";
+
+    const escapeHtml = (value: string) => String(value)
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#39;");
+
+    const openByTag = (tag: string) => {
+      const matched = works.filter((work) => Array.isArray(work.tags) && work.tags.includes(tag));
+      titleEl.textContent = `タグ: ${tag} (${matched.length}件)`;
+
+      if (matched.length === 0) {
+        listEl.innerHTML = '<p class="text-slate-400">該当する作品はありません。</p>';
+      } else {
+        listEl.innerHTML = matched
+          .map(
+            (work) => `
+              <a href="${popupBaseUrl}works/${work.id}" class="block rounded-lg border border-slate-700 p-3 transition-colors hover:border-blue-500">
+                <p class="font-semibold text-slate-100">${escapeHtml(work.title)}</p>
+                <p class="mt-1 text-sm text-slate-400">${escapeHtml(work.description)}</p>
+              </a>
+            `
+          )
+          .join("");
+      }
+
+      dialog.showModal();
+    };
+
+    document.addEventListener("click", (event) => {
+      if (!(event.target instanceof Element)) {
+        return;
+      }
+
+      const closeBtn = event.target.closest("[data-close-tag-dialog]");
+      if (closeBtn) {
+        dialog.close();
+        return;
+      }
+
+      const tagEl = event.target.closest("[data-tag-button]");
+      if (!tagEl) {
+        return;
+      }
+
+      event.preventDefault();
+      event.stopPropagation();
+      const tag = tagEl.getAttribute("data-tag");
+      if (tag) {
+        openByTag(tag);
+      }
+    });
+
+    dialog.addEventListener("click", (event) => {
+      const rect = dialog.getBoundingClientRect();
+      const inDialog =
+        rect.top <= event.clientY &&
+        event.clientY <= rect.top + rect.height &&
+        rect.left <= event.clientX &&
+        event.clientX <= rect.left + rect.width;
+
+      if (!inDialog) {
+        dialog.close();
+      }
+    });
+  }
+</script>
