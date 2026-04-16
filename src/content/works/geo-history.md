@@ -5,6 +5,7 @@ description: "位置情報を用いて、訪れた市区町村や駅をコレク
 tags: ["Application", "Unity", "API"]
 image: ./geo-history/geo-history.png
 youtubeUrl: https://youtu.be/5eD1vfGi7Oc
+priority: 3
 ---
 
 ## 概要

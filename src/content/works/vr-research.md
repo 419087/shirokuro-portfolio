@@ -4,6 +4,7 @@ publishDate: 2026-02-24
 description: "卒業研究で取り組んでいる、VRにおけるネットワーク遅延の評価実験です。"
 tags: ["Unity", "VR", "Research"]
 image: ./vr-research/vr-research.png
+priority: 1
 ---
 
 ## 概要

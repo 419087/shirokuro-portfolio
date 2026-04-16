@@ -11,6 +11,7 @@ const worksCollection = defineCollection({
     tags: z.array(z.string()),
     image: imageHelper().optional(),
     youtubeUrl: z.string().url().optional(),
+    priority: z.number().default(0),
   }),
 });
 

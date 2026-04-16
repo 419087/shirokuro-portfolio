@@ -4,6 +4,7 @@ publishDate: 2026-04-15
 description: "敵国の監獄からの脱出を目指す3Dアドベンチャーゲーム"
 tags: ["Game", "Unity"]
 image: ./prison-riddle-adventure/prison-riddle-adventure.png
+priority: 10
 ---
 
 ## 概要
