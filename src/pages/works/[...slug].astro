@@ -90,7 +90,7 @@ const youtubeEmbedUrl = entry.data.youtubeUrl
         </p>
       </header>
 
-      {youtubeEmbedUrl && (
+      {youtubeEmbedUrl ? (
         <div class="mt-6 overflow-hidden rounded-xl border border-slate-700/70 bg-black shadow-2xl shadow-cyan-950/20">
           <div class="aspect-video">
             <iframe
@@ -104,9 +104,7 @@ const youtubeEmbedUrl = entry.data.youtubeUrl
             />
           </div>
         </div>
-      )}
-
-      {entry.data.image && (
+      ) : entry.data.image ? (
         <div class="mt-6 overflow-hidden rounded-lg">
           <Image
             src={entry.data.image}
@@ -114,7 +112,7 @@ const youtubeEmbedUrl = entry.data.youtubeUrl
             class="w-full object-cover"
           />
         </div>
-      )}
+      ) : null}
 
       <div
         class="pt-6 md:pt-8 [&_a]:text-blue-400 [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-blue-400/70 [&_a:hover]:text-blue-300 [&_a:hover]:decoration-blue-300 [&_h2]:mt-8 [&_h2]:border-l-4 [&_h2]:border-cyan-400/80 [&_h2]:pl-3 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-slate-100 [&_p]:mt-4 [&_p]:leading-8 [&_p]:text-slate-200 [&>ul]:mt-4 [&>ul]:list-disc [&>ul]:space-y-2 [&>ul]:pl-5 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_li>p]:mt-0 [&_li>p]:mb-0 [&_li>ul]:mt-2 [&_li>ol]:mt-2 [&_li]:text-slate-200"
