@@ -1,9 +1,9 @@
 ---
-title: "prison-riddle-adventure(仮名)"
+title: "prison-riddle-adventure(現在開発中の仮名)"
 publishDate: 2026-04-15
 description: "敵国の監獄からの脱出を目指す3Dアドベンチャーゲーム"
 tags: ["Game", "Unity"]
-image: ./jjj/jjj.png
+image: ./prison-riddle-adventure/prison-riddle-adventure.png
 ---
 
 ## 概要
