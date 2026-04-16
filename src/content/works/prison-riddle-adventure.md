@@ -1,9 +1,10 @@
 ---
-title: "prison-riddle-adventure(現在開発中の仮名)"
+title: "prison-riddle-adventure(開発中のため仮名)"
 publishDate: 2026-04-15
 description: "敵国の監獄からの脱出を目指す3Dアドベンチャーゲーム"
 tags: ["Game", "Unity"]
 image: ./prison-riddle-adventure/prison-riddle-adventure.png
+priority: 10
 ---
 
 ## 概要
@@ -15,7 +16,7 @@ image: ./prison-riddle-adventure/prison-riddle-adventure.png
 ## 制作体制
 4人のチーム（うちプログラマー2人）
 
-私はプロジェクトマネージャーとプログラマーとして参加しました。プログラマーとしては、ゲーム全体を進行するための基盤のシステムや、本編で登場するパズル、ゲーム全体のUIの実装を担当しました。
+私はプロジェクトマネージャーとプログラマーとして参加しました。プログラマーとしては、ゲーム全体を進行するための基盤のシステムや、本編で登場するパズル、ゲーム全体のUIの実装を担当しています。
 
 ## 技術スタック
 - Unity 6000.2.6f2

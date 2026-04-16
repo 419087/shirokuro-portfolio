@@ -10,6 +10,8 @@ const worksCollection = defineCollection({
     description: z.string(),
     tags: z.array(z.string()),
     image: imageHelper().optional(),
+    youtubeUrl: z.string().url().optional(),
+    priority: z.number().default(0),
   }),
 });
 

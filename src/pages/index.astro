@@ -6,9 +6,9 @@ import { Image } from 'astro:assets';
 import TagFilterButton from '../components/TagFilterButton.astro';
 import TagWorksPopup from '../components/TagWorksPopup.astro';
 
-// 作品を公開日順に取得
+// 作品を優先順位順に取得
 const allWorks = (await getCollection('works')).sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+  (a, b) => a.data.priority.valueOf() - b.data.priority.valueOf()
 );
 ---
 
@@ -16,9 +16,17 @@ const allWorks = (await getCollection('works')).sort(
   <header class="py-12">
     <h1 class="text-4xl font-extrabold mb-4">shirokuro Portfolio</h1>
     <p class="text-slate-400 text-lg max-w-3xl">
-      VRコンテンツ開発とネットワーク遅延の研究に取り組んでいます。
-      主にUnity / C#を用いたインタラクティブな体験の構築が得意です。
+      大学でゲーム制作サークルに所属し、主にチームで様々なゲーム開発を行っています。<br />
+      研究室では、VR体験とネットワーク遅延の関係について研究しています。
     </p>
+    <a
+      href="https://github.com/419087"
+      target="_blank"
+      rel="noreferrer"
+      class="mt-5 inline-flex items-center rounded-md border border-blue-300/40 bg-slate-900/80 px-4 py-2 text-sm font-medium text-blue-300 transition-colors hover:border-blue-300 hover:text-blue-200"
+    >
+      GitHubプロフィールページ
+    </a>
   </header>
 
   <section>

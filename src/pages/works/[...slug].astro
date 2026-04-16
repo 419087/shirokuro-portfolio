@@ -15,6 +15,36 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const getYouTubeEmbedUrl = (url: string) => {
+  const normalizedUrl = new URL(url);
+  const pathname = normalizedUrl.pathname;
+
+  if (normalizedUrl.hostname.includes("youtube.com")) {
+    if (pathname.startsWith("/embed/")) {
+      return url;
+    }
+
+    if (pathname.startsWith("/shorts/")) {
+      const videoId = pathname.split("/")[2];
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+    }
+
+    const videoId = normalizedUrl.searchParams.get("v");
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+  }
+
+  if (normalizedUrl.hostname.includes("youtu.be")) {
+    const videoId = pathname.split("/").filter(Boolean)[0];
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+  }
+
+  return null;
+};
+
+const youtubeEmbedUrl = entry.data.youtubeUrl
+  ? getYouTubeEmbedUrl(entry.data.youtubeUrl)
+  : null;
 ---
 
 <Layout>
@@ -60,7 +90,21 @@ const { Content } = await render(entry);
         </p>
       </header>
 
-      {entry.data.image && (
+      {youtubeEmbedUrl ? (
+        <div class="mt-6 overflow-hidden rounded-xl border border-slate-700/70 bg-black shadow-2xl shadow-cyan-950/20">
+          <div class="aspect-video">
+            <iframe
+              class="h-full w-full"
+              src={youtubeEmbedUrl}
+              title={entry.data.title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            />
+          </div>
+        </div>
+      ) : entry.data.image ? (
         <div class="mt-6 overflow-hidden rounded-lg">
           <Image
             src={entry.data.image}
@@ -68,7 +112,7 @@ const { Content } = await render(entry);
             class="w-full object-cover"
           />
         </div>
-      )}
+      ) : null}
 
       <div
         class="pt-6 md:pt-8 [&_a]:text-blue-400 [&_a]:underline [&_a]:underline-offset-4 [&_a]:decoration-blue-400/70 [&_a:hover]:text-blue-300 [&_a:hover]:decoration-blue-300 [&_h2]:mt-8 [&_h2]:border-l-4 [&_h2]:border-cyan-400/80 [&_h2]:pl-3 [&_h2]:text-xl [&_h2]:font-bold [&_h2]:text-slate-100 [&_p]:mt-4 [&_p]:leading-8 [&_p]:text-slate-200 [&>ul]:mt-4 [&>ul]:list-disc [&>ul]:space-y-2 [&>ul]:pl-5 [&_ul]:list-disc [&_ul]:space-y-2 [&_ul]:pl-5 [&_li>p]:mt-0 [&_li>p]:mb-0 [&_li>ul]:mt-2 [&_li>ol]:mt-2 [&_li]:text-slate-200"

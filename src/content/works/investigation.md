@@ -4,6 +4,8 @@ publishDate: 2026-04-15
 description: "化け物から逃げながら脱出を目指す3Dホラーゲーム"
 tags: ["Game", "Unity"]
 image: ./investigation/Investigation.png
+youtubeUrl: https://youtu.be/LjSaJyQ6uCQ
+priority: 6
 ---
 
 ## 概要
