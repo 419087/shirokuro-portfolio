@@ -15,6 +15,36 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+
+const getYouTubeEmbedUrl = (url: string) => {
+  const normalizedUrl = new URL(url);
+  const pathname = normalizedUrl.pathname;
+
+  if (normalizedUrl.hostname.includes("youtube.com")) {
+    if (pathname.startsWith("/embed/")) {
+      return url;
+    }
+
+    if (pathname.startsWith("/shorts/")) {
+      const videoId = pathname.split("/")[2];
+      return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+    }
+
+    const videoId = normalizedUrl.searchParams.get("v");
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+  }
+
+  if (normalizedUrl.hostname.includes("youtu.be")) {
+    const videoId = pathname.split("/").filter(Boolean)[0];
+    return videoId ? `https://www.youtube.com/embed/${videoId}` : null;
+  }
+
+  return null;
+};
+
+const youtubeEmbedUrl = entry.data.youtubeUrl
+  ? getYouTubeEmbedUrl(entry.data.youtubeUrl)
+  : null;
 ---
 
 <Layout>
@@ -59,6 +89,22 @@ const { Content } = await render(entry);
           {entry.data.description}
         </p>
       </header>
+
+      {youtubeEmbedUrl && (
+        <div class="mt-6 overflow-hidden rounded-xl border border-slate-700/70 bg-black shadow-2xl shadow-cyan-950/20">
+          <div class="aspect-video">
+            <iframe
+              class="h-full w-full"
+              src={youtubeEmbedUrl}
+              title={entry.data.title}
+              loading="lazy"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            />
+          </div>
+        </div>
+      )}
 
       {entry.data.image && (
         <div class="mt-6 overflow-hidden rounded-lg">

@@ -4,6 +4,7 @@ publishDate: 2026-04-15
 description: "3D版スイカゲーム"
 tags: ["Game", "Unity"]
 image: ./water-melon-3d/BallDropGame3D.png
+youtubeUrl: https://youtu.be/_vU8Up5enY8
 ---
 
 ## 概要

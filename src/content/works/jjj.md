@@ -4,6 +4,7 @@ publishDate: 2026-03-16
 description: "邪道なじゃんけんの勝敗をジャッジするゲーム"
 tags: ["Game", "Unity"]
 image: ./jjj/jjj.png
+youtubeUrl: https://youtu.be/UktkP_ULZro
 ---
 
 ## 概要

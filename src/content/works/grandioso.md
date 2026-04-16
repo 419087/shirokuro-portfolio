@@ -4,6 +4,7 @@ publishDate: 2026-04-15
 description: "音大生とのコラボで作ったリズムゲーム"
 tags: ["Game", "Unity"]
 image: ./grandioso/Grandioso.png
+youtubeUrl: https://youtu.be/VjYV_Snpwq4
 ---
 
 ## 概要
