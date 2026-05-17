@@ -21,5 +21,5 @@ priority: 1
     - Netcode for GameObjects
 - C#
 
-## Links
+## リンク
 - [GitHubリポジトリ](https://github.com/419087/latency-vr-interaction-experiment)
