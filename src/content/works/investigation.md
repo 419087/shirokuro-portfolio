@@ -25,7 +25,7 @@ priority: 6
 - Blender
 
 ## 制作期間
-約4か月（2022年4月～2022年10月）
+約4か月（2022年7月～2022年10月）
 
 ## リンク
 - [サークルHP(Windows向けビルドを配布しています)](https://micomprocedure.com/works/22a)
